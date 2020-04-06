@@ -1,0 +1,28 @@
+{% extends 'dash/base.html' %}
+
+{% block content %}
+
+<h1 class="h3 mb-1 text-gray-800">Reviews:</h1>
+
+{% if request.user.helper.rewiew_set.all %}
+{% for i in request.user.helper.rewiew_set.all %}
+<div class="card mb-3">
+    <div class="card-header">
+        Stars: {{i.star}}
+    </div>
+    <div class="card-body">
+        {{i.comment}}
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="card mb-3">
+    <div class="card-header">
+        No Review about you have written yet
+    </div>
+</div>
+{% endif %}
+
+
+
+{% endblock %}

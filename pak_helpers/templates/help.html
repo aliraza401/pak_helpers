@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block container %}
+
+<div class="container">
+    <div class="row">
+        <h1 class="h3 mb-2 text-gray-800">Frequently asked questions:</h1>
+        {% for i in questions %}
+        {% if i.is_frequent %}
+
+        <div class="mb-4 border-left-info">
+            <div class="card bg-primary text-white shadow">
+              <div class="card-body">
+                <strong class="text-info">Name:</strong>{{i.name}}
+                <div class="text-white-50 small"><strong class="text-info">Question:</strong>{{i.question}}</div>
+                <div class="text-white-50 small"><strong class="text-info">Answer:</strong>{{i.answer}}</div>
+              </div>
+            </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
+

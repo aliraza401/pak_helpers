@@ -1,0 +1,66 @@
+{% extends 'emp_dash/base.html' %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="card border-left-warning shadow h-100 py-2 col-md-3 mx-1">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Loyalty Points</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                </div>
+                <div class="col-auto">
+                    <i class="fa fa-chart-pie fa-2x text-gray-300"></i>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="card border-left-info shadow h-100 py-2 col-md-3 mx-1">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Profile Views</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                </div>
+                <div class="col-auto">
+                    <i class="fa fa-chart-line fa-2x text-gray-300"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Comments of user only 2 -->
+<div class="row my-5">
+
+    <div class="col-md-6">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Actions</h6>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'employer:update_employer' %}" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fa fa-flag"></i>
+                    </span>
+                    <span class="text">Update Profile</span>
+                </a>
+                <div class="my-2"></div>
+                <a href="{% url 'employer:deactive' %}" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fa fa-info-circle"></i>
+                    </span>
+                    <span class="text">Deactivate Account</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

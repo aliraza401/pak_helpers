@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/home/ali/anaconda3/envs/pakhelpers_env2/bin/python",
+    "python.formatting.provider": "yapf"
+}

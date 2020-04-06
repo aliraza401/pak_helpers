@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block container %}
+<div class="container mb-5">
+    <div class="row">
+        <!-- search  -->
+        <div class="col-md-3 ">
+
+            <form>
+                {{myFilter.form|crispy}}
+                <input type="submit" class="btn btn-block btn-primary" value="Search">
+            </form>
+
+        </div>
+        <!-- cards  -->
+        <!-- List of all helpers -->
+        <div class="col-md-9 ">
+            <div class="row">
+                {% for i in helpers %}
+                <div class="col-md-4">
+                    <a href="{% url 'detail_view' i.user.id %}" style="text-decoration: none;">
+                        <div class="card mb-4 box-shadow text-dark ">
+                            <div class="text-light bg-dark px-2">
+                                <span> {{i.user.username}} </span>
+                                <small class=" float-right">{{i.user.date_joined|date}}</small>
+                            </div>
+                            <img class="card-img-right flex-auto d-none d-block" src="{{ i.profile_picture.url }}"
+                                alt="image of emp" height="200px;">
+                            <div class="card-body bg-dark text-light">
+                                <p class="card-text lead"><strong class="text-success">Work
+                                        rate:</strong>{{i.daily_work_rate}}</p>
+                                <p class="card-text lead"><strong class="text-success">Rating:</strong>{{i.rating}}</p>
+                                <p class="card-text"><strong class="text-success">Genger:</strong>{{i.gender}}</p>
+                                <p class="card-text"><strong
+                                        class="text-success">Location:</strong><small>{{i.area}},{{i.city}}</small></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if helpers.has_other_pages %}
+            <ul class="pagination justify-content-center">
+                {% if helpers.has_previous %}
+                <li><a class="page-link" href="?page={{ helpers.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                <li class="page-link disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in helpers.paginator.page_range %}
+                {% if helpers.number == i %}
+                <li class="page-link bg-primary text-light"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                <li><a class="page-link"  href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if helpers.has_next %}
+                <li><a class="page-link" href="?page={{ helpers.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                <li class="page-link" class="page-item disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

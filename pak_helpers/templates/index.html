@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<div class="container marketing">
+    <!-- Three columns of text below the carousel -->
+    <h1 class="h3 mb-2 text-gray-800">Our top Helpers:</h1>
+    <div class="row">
+        {% for i in helpers %}
+        <div class="col-lg-4">
+            <img width="100%" height="100%" class="img-fluid rounded-circle" style="max-height: 170px; max-width: 170px;"
+                src="{{ i.profile_picture.url }}">
+            <h2>{{ i.user.username }}</h2>
+            <p>
+                {{ i.description }}
+            </p>
+            <p><a class="btn btn-secondary" href="{% url 'detail_view' i.user.pk %}" role="button">View details &raquo;</a></p>
+        </div>
+
+        {% endfor %}
+    </div><!-- /.row -->
+    <a href="{% url 'list_view' %}" class="btn btn-primary btn-lg btn-facebook btn-block"><i class="fab fa-facebook-f fa-fw"></i> View All Helpers</a>
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+
+    <div class="row mb-4">
+        <div class="col-md-6  border-right">
+            <div class="text-center d-flex justify-content-center my-1">
+                <img class="  img-fluid" src="{% static 'img/helper.png' %}" style="max-height: 300px;">
+            </div>
+            <a href="{% url 'helper:create_helper' %}" class="btn btn-lg btn-outline-warning rounded-0 text-center btn-block"> Become Helper </a>
+            
+        </div>
+
+        <div class="col-md-6" >
+            <div class="text-center d-flex justify-content-center my-1">
+                <img class="  img-fluid" src="{% static 'img/employer.svg' %}" style="min-height: 300px;">
+            </div>           
+            <a href="{% url 'employer:create_employer' %}" class="btn btn-lg btn-outline-warning rounded-0 text-center btn-block"> Become Employer </a>
+
+        </div>
+    </div>
+
+
+    <hr class="featurette-divider">
+
+
+
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">We are here to <span class="text-muted">provide relibale help.</span>
+            </h2>
+            <ul style="font-weight: bolder;">
+                <li class="lead">This is marketplace to map the work force with local work demand</li>
+                <li>select worker skills​ , ​rate and ​ customer reviews</li>
+            </ul>
+        </div>
+        <div class="col-md-5">
+            <img width="100%" height="100%" src="{% static 'img/back1.jpg' %}" class="img-fluid">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">We are here to <span class="text-muted">provide relibale help.</span>
+            </h2>
+            <ul style="font-weight: bolder;">
+                <li class="lead">This is marketplace to map the work force with local work demand</li>
+                <li>select worker skills​ , ​rate and ​ customer reviews</li>
+                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, repellendus!</li>
+            </ul>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img width="100%" height="100%" src="{% static 'img/back2.jpg' %}" class="img-fluid">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+</div><!-- /.container -->
+
+{% endblock %}

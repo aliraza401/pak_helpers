@@ -1,0 +1,21 @@
+{% extends 'emp_dash/base.html' %}
+
+{% block content %}
+
+<h1 class="h3 mb-1 text-gray-800">Are you sure you want to deactivate your account:</h1>
+
+<h4>Account name :
+    <strong>
+        {{request.user.username}}
+    </strong>
+</h4>
+
+<form method="POST">
+    {% csrf_token %}
+    <a href="{% url 'employer:dashboard_employer' %}" class="btn btn-primary rounded-0 text-white">Cancel</a>
+    <input type="submit" value="Confirm Delete" class="btn btn-danger rounded-0">
+</form>
+
+
+
+{% endblock %}

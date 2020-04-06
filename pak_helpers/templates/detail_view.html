@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block container %}
+<div class="container mb-5">
+    
+    <div class="row">
+
+        <div class="col-md-4">
+            <a href="{% url 'list_view' %}" class="btn rounded-0 btn-primary btn-block text-white mb-5"> back to helper list </a>
+            <div class="d-flex justify-content-center">
+                <img src="{{ helper.profile_picture.url }}" height="300px" width="300px" class="img img-fluid text-center  border border-secondary rounded-circle">
+            </div>
+            <br>
+            <div class="">
+                <p>
+                    <strong>Username:</strong>{{helper.user.username}}
+                </p>
+            </div>
+            
+            <div class="">
+                <p>
+                    <strong>Contact Number:</strong>{{helper.contact_number}}
+                </p>
+            </div>
+            <div class="">
+                <p>
+                    <strong>Daily Work Rate:</strong>{{helper.daily_work_rate}}
+                </p>
+            </div>
+            
+
+        </div>
+
+        <div class="col-md-8">
+            <div class="">
+                <p>
+                    <strong>Email:</strong>{{helper.user.email}}
+                    <span class="float-right">
+                        {{helper.user.date_joined|date}}
+                    </span>
+                </p>
+            </div>
+            <div class="">
+                <p>
+                    <strong>Rating:</strong>{{helper.rating}}
+                </p>
+            </div>
+            <div class="">
+                <p>
+                    <strong>gender:</strong>{{helper.gender}}
+                </p>
+            </div>
+            
+            <div class="card col-12">
+                <div class="card-header">
+                    Description:
+                </div>
+                <div class="card-body">
+                    {{helper.description}}                            
+                </div>
+            </div>
+
+            <div>
+                {% for i in category_list %}
+                    <span class="btn btn-lg rounded-0 btn-info mt-5 lead">{{i.name}}</span>
+                {% endfor %}
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
